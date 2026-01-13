@@ -1,0 +1,43 @@
+# StoryGen RunPod Server - ROCm/AMD Version
+# For AMD MI300X and other ROCm-compatible GPUs
+
+# Core ML - ROCm PyTorch (install separately via pip index)
+# pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.0
+transformers>=4.45.0
+diffusers>=0.32.0
+accelerate>=0.28.0
+safetensors>=0.4.0
+
+# Image/Video processing
+Pillow>=10.0.0
+opencv-python-headless>=4.8.0
+imageio>=2.33.0
+imageio-ffmpeg>=0.4.9
+
+# Training (no bitsandbytes - not ROCm compatible)
+peft>=0.10.0
+datasets>=2.18.0
+prodigyopt
+
+# API server
+fastapi
+uvicorn[standard]
+
+# Utilities
+requests>=2.31.0
+huggingface_hub>=0.21.0
+tqdm>=4.66.0
+pyyaml>=6.0.0
+toml>=0.10.2
+aiofiles
+aiohttp
+python-multipart
+
+# Audio
+soundfile
+librosa
+scipy
+
+# Wan 2.2 specific
+einops>=0.7.0
+sentencepiece>=0.2.0

@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+.venv/
+ENV/
+env/
+
+# Models (too large for git)
+models/
+*.safetensors
+*.ckpt
+*.bin
+*.pt
+*.pth
+
+# Outputs
+outputs/
+*.mp4
+*.wav
+*.png
+*.jpg
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
