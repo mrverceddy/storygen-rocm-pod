@@ -40,7 +40,6 @@ pip install \
     uvicorn[standard] \
     transformers>=4.45.0 \
     accelerate \
-    diffusers>=0.32.0 \
     sentencepiece \
     protobuf \
     scipy \
@@ -56,6 +55,10 @@ pip install \
     aiohttp \
     python-multipart \
     pillow
+
+# Install latest diffusers from git (required for QwenImageEditPlusPipeline)
+echo "Installing latest diffusers from git..."
+pip install git+https://github.com/huggingface/diffusers
 
 # Install flash-attention for ROCm (if available)
 echo "Attempting to install flash-attention for ROCm..."
@@ -86,8 +89,21 @@ os.environ["HF_HOME"] = "/workspace/models"
 
 from huggingface_hub import snapshot_download
 
-print("Downloading Qwen-Image-2512...")
+print("Downloading Qwen-Image-2512 (text-to-image)...")
 snapshot_download("Qwen/Qwen-Image-2512", local_dir="/workspace/models/qwen-image")
+
+print("Downloading Qwen-Image-Edit-2511 (img2img and reference conditioning)...")
+snapshot_download("Qwen/Qwen-Image-Edit-2511", local_dir="/workspace/models/qwen-image-edit")
+
+print("Downloading Multiple Angles LoRA for scene camera control...")
+import os
+os.makedirs("/workspace/models/loras/multiple-angles", exist_ok=True)
+from huggingface_hub import hf_hub_download
+hf_hub_download(
+    repo_id="fal/Qwen-Image-Edit-2511-Multiple-Angles-LoRA",
+    filename="qwen-image-edit-2511-multiple-angles-lora.safetensors",
+    local_dir="/workspace/models/loras/multiple-angles"
+)
 
 print("Downloading Wan 2.1 FLF2V (First-Last-Frame to Video)...")
 snapshot_download("Wan-AI/Wan2.1-FLF2V-14B-720P-diffusers", local_dir="/workspace/models/wan-flf2v")

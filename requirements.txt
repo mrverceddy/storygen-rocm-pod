@@ -4,7 +4,8 @@
 # Core ML - ROCm PyTorch (install separately via pip index)
 # pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.0
 transformers>=4.45.0
-diffusers>=0.32.0
+# diffusers: MUST install from git for QwenImageEditPlusPipeline support
+# pip install git+https://github.com/huggingface/diffusers
 accelerate>=0.28.0
 safetensors>=0.4.0
 
